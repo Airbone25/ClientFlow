@@ -1,121 +1,109 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
 import './App.css'
 
+const capabilities = [
+  {
+    title: 'Tenant-aware operations',
+    description:
+      'Keep every workspace isolated with scoped teams, clients, projects, and documents.',
+  },
+  {
+    title: 'Project execution visibility',
+    description:
+      'Track progress, ownership, and approvals across active client deliverables.',
+  },
+  {
+    title: 'Billing and usage control',
+    description:
+      'Manage subscriptions, invoices, and usage metrics from a single dashboard.',
+  },
+]
+
+const plans = [
+  { name: 'Starter', price: '₹999/mo', limits: '3 team members • 20 clients' },
+  { name: 'Growth', price: '₹2,999/mo', limits: '15 team members • 100 clients' },
+  {
+    name: 'Business',
+    price: '₹7,999/mo',
+    limits: '50 team members • Unlimited clients',
+  },
+  { name: 'Enterprise', price: 'Custom', limits: 'SSO • Audit logs • Dedicated DB' },
+]
+
+const workflow = [
+  'Onboard your tenant and configure branding',
+  'Invite internal members and assign roles',
+  'Set up clients, projects, and milestones',
+  'Share progress through the client portal',
+]
+const currentYear = new Date().getFullYear()
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div className="page">
+      <header className="topbar">
+        <p className="brand">ClientFlow</p>
+        <nav aria-label="Primary">
+          <a href="#features">Features</a>
+          <a href="#plans">Plans</a>
+          <a href="#workflow">Workflow</a>
+        </nav>
+      </header>
+
+      <main>
+        <section className="hero">
+          <p className="eyebrow">Client operations portal for service businesses</p>
+          <h1>Operate every client account from one React-powered workspace.</h1>
+          <p className="hero-copy">
+            ClientFlow centralizes tenant management, project delivery, collaboration,
+            and billing into a clean multi-tenant experience.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+          <div className="hero-actions">
+            <button type="button">Start free trial</button>
+            <button type="button" className="ghost">
+              Schedule demo
+            </button>
+          </div>
+        </section>
 
-      <div className="ticks"></div>
+        <section id="features" className="section">
+          <h2>Core product capabilities</h2>
+          <div className="grid cards">
+            {capabilities.map((item) => (
+              <article key={item.title} className="card">
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <section id="plans" className="section">
+          <h2>Subscription plans</h2>
+          <div className="grid plans">
+            {plans.map((plan) => (
+              <article key={plan.name} className="plan">
+                <h3>{plan.name}</h3>
+                <p className="price">{plan.price}</p>
+                <p>{plan.limits}</p>
+              </article>
+            ))}
+          </div>
+        </section>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+        <section id="workflow" className="section workflow">
+          <h2>How teams use ClientFlow</h2>
+          <ol>
+            {workflow.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+        </section>
+      </main>
+
+      <footer>
+        <p>© {currentYear} ClientFlow • Built with React</p>
+      </footer>
+    </div>
   )
 }
 

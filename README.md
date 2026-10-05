@@ -53,3 +53,19 @@ Usage-based add-ons can be billed separately for AI credits, storage, messaging,
 An initial PostgreSQL schema covering the required core tables is provided in:
 
 - `/home/runner/work/ClientFlow/ClientFlow/schema.sql`
+
+## Frontend (React)
+
+A React frontend is available in:
+
+- `/home/runner/work/ClientFlow/ClientFlow/frontend`
+
+To run it locally:
+
+1. `cd /home/runner/work/ClientFlow/ClientFlow/frontend`
+2. `npm install`
+3. `npm run dev`
+
+For production build validation:
+
+- `npm run build`

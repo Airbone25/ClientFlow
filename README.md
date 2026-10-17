@@ -69,3 +69,17 @@ To run it locally:
 For production build validation:
 
 - `npm run build`
+
+## Deploy to GitHub Pages
+
+This repository includes a GitHub Actions workflow at:
+
+- `/home/runner/work/ClientFlow/ClientFlow/.github/workflows/deploy-pages.yml`
+
+To publish the frontend:
+
+1. In your GitHub repository, go to **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Push to the `main` branch (or run the workflow manually from the **Actions** tab).
+
+The workflow builds `/home/runner/work/ClientFlow/ClientFlow/frontend` and deploys `frontend/dist` to GitHub Pages.
